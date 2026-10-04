@@ -13,14 +13,21 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "ruff",
+            "name": "linter",
             "type": "debugpy",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "module": "ruff",
             "args": ["check", "."],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "tests",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "module": "pytest",
+            "console": "integratedTerminal"
         }
-
     ]
 }

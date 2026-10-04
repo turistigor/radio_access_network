@@ -3,8 +3,8 @@ from datetime import datetime
 
 
 async def test_init():
-    start = datetime.now()
+    start = datetime.now().astimezone()
 
     await aio.sleep(1)
 
-    assert start != datetime.now()
+    assert start != datetime.now().astimezone()

@@ -2,3 +2,6 @@
 *__pycache__*
 *.pyc
 .ruff_cache
+
+dist
+src/radio_network_access.egg-info

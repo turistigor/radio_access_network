@@ -10,3 +10,14 @@ dependencies = [
     "ruff>=0.16.10",
     "sqlalchemy>=2.1.3",
 ]
+
+[tool.ruff.lint.per-file-ignores]
+# Какие группы правил проверять
+select = ["E", "F", "UP", "B"] 
+
+# Список кодов предупреждений, которые нужно игнорировать
+ignore = []
+
+"__init__.py" = ["EXE002"]
+
+"__main__.py" = ["EXE002"]

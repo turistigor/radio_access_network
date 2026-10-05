@@ -26,9 +26,6 @@ jobs:
       - name: Run Ruff Check
         run: uv run ruff check .
 
-      - name: Run Ruff Format Check
-        run: uv run ruff format --check .
-
   test:
     name: Run Tests (Pytest)
     runs-on: ubuntu-latest

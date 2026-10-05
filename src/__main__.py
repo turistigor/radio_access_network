@@ -5,7 +5,8 @@ from fastapi import FastAPI
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from src.endpoints.healthcheck import health_router
-from src.middleware.request_timer import request_timer
+from src.endpoints.devices import devices_router
+from src.middleware.request_profiler import request_profiler
 
 logging.basicConfig(
     level=logging.INFO,
@@ -22,6 +23,7 @@ if __name__ == '__main__':
     )
 
     app.include_router(health_router)
-    app.add_middleware(BaseHTTPMiddleware, dispatch=request_timer)
+    app.include_router(devices_router)
+    app.add_middleware(BaseHTTPMiddleware, dispatch=request_profiler)
 
     uvicorn.run(app)

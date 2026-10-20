@@ -1,0 +1,14 @@
+services:
+  database:
+    image: postgres
+    container_name: ran_db
+    environment:
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    command: postgres -p ${DATABASE_PORT}
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    volumes:
+      - ./database_data:/var/lib/postgresql/18/data
+      - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql

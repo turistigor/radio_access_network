@@ -1,0 +1,40 @@
+@startuml communications_mvp_containers
+
+
+' Initial settings:
+
+title Fleet Management System context diagram
+top to bottom direction
+
+!NEW_C4_STYLE=1
+!include ./lib/C4_Context.puml
+
+
+' Actors & components:
+
+Person(operator, Operator, "FMS operator")
+System_Boundary(fm_system, "Fleet management system") {
+    System(software, "FMS software")
+    System(phys_dev2, "Physical device 2")
+    System(phys_dev1, "Physical device 1")
+    System(phys_dev3, "Physical device 3")
+
+    Lay_R(phys_dev1, phys_dev2)
+    Lay_R(phys_dev2, phys_dev3)
+}
+
+
+' Relations:
+
+Rel(operator, software, "HTTPS: devices commands")
+Rel(software, operator, "WS: devices telemetry")
+
+Rel(software, phys_dev1, "cmd")
+Rel(software, phys_dev2, "cmd")
+Rel(software, phys_dev3, "cmd")
+
+Rel(phys_dev1, software, "tm")
+Rel(phys_dev2, software, "tm")
+Rel(phys_dev3, software, "tm")
+
+@enduml

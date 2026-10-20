@@ -1,12 +1,13 @@
 import logging
 from datetime import datetime
+from typing import Awaitable
 
 from fastapi import Request
 
 logger = logging.getLogger(__name__)
 
 
-async def request_profiler(request: Request, call_next) -> Request:
+async def request_profiler(request: Request, call_next: Awaitable) -> Request:
     start = datetime.now().astimezone()
 
     response = await call_next(request)
